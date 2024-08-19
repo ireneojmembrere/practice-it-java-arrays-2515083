@@ -8,11 +8,9 @@ public class App {
     if (arr.length <= 1) {
       return null; // return null if array is empty or has only 1 element
     } else {
-      int smallestInt = arr[0]; // start with first element of array
       boolean isTheSame = true;
-
       for (int i = 0; i < arr.length; i++) {
-        if (smallestInt != arr[i]) {
+        if (arr[0] != arr[i]) { // checks if we have different elements in the array
           isTheSame = false;
         }
       }
@@ -20,23 +18,12 @@ public class App {
         return null; // return null if all elements are the same
       }
 
+      int smallestInt = Integer.MAX_VALUE, secondSmallestInt = Integer.MAX_VALUE;
       for (int i = 0; i < arr.length; i++) {
-        if (arr[i] < smallestInt) { // replace variable value if next element in array is smaller
+        if (arr[i] < smallestInt){ // when arr[i] smaller than both, we have a new smallest integer
+          secondSmallestInt = smallestInt;
           smallestInt = arr[i];
-        }
-      }
-
-      int secondSmallestInt;
-      if (smallestInt != arr[0]) { // start with first element of array as long as not equal to the smallest
-                                   // integer
-        secondSmallestInt = arr[0];
-      } else {
-        secondSmallestInt = arr[1];
-      }
-
-      for (int i = 0; i < arr.length; i++) { // replace variable value if next element in array is smaller AND bigger
-                                             // than smallest
-        if (arr[i] < secondSmallestInt && arr[i] > smallestInt) {
+        } else if (arr[i] > smallestInt && arr[i] < secondSmallestInt) { // when arr[i] between, we have a new second smallest integer
           secondSmallestInt = arr[i];
         }
       }
@@ -67,8 +54,24 @@ public class App {
     return rotatedArr;
   }
 
+  public static void moveZerosToTheEnd(int[] arr) {
+    int i = 0;
+    int zerosCount = 0;
+    while (i < arr.length - zerosCount){
+      if (arr[i] == 0){
+        for (int j = i; j < arr.length-1; j++){
+          arr[j] = arr[j+1];
+        }
+        arr[arr.length-1] = 0;
+        zerosCount++;
+      } else {
+        i++;
+      }
+    }
+  }
+
   public static void main(String[] args) {
-    int testing = 3;
+    int testing = 4;
 
     if (testing == 1) {// testing findSecondSmallestItem
       Integer[] arr = new Integer[] { 5, 8, 3, 2, 6 };
@@ -118,6 +121,51 @@ public class App {
       System.out.println(Arrays.toString(arr2));
       arr2 = rotateRight(arr2);
       System.out.println(Arrays.toString(arr2));
+    }
+
+    if (testing == 4){
+      int[] arr = new int[] { 1, 1, 0, 0, 0, 1, 0 };
+      System.out.println(Arrays.toString(arr));
+      moveZerosToTheEnd(arr);
+      System.out.println(Arrays.toString(arr));
+      System.out.println();
+
+      int[] arr2 = new int[] { 0, 0, 1, 2, 3, 0, 4 };
+      System.out.println(Arrays.toString(arr2));
+      moveZerosToTheEnd(arr2);
+      System.out.println(Arrays.toString(arr2));
+      System.out.println();
+
+      int[] arr3 = new int[] { 0, 0 };
+      System.out.println(Arrays.toString(arr3));
+      moveZerosToTheEnd(arr3);
+      System.out.println(Arrays.toString(arr3));
+      System.out.println();
+
+      int[] arr4 = new int[] { 2, 9, 1 };
+      System.out.println(Arrays.toString(arr4));
+      moveZerosToTheEnd(arr4);
+      System.out.println(Arrays.toString(arr4));
+      System.out.println();
+
+      int[] arr5 = new int[] { 0, 10, 0 };
+      System.out.println(Arrays.toString(arr5));
+      moveZerosToTheEnd(arr5);
+      System.out.println(Arrays.toString(arr5));
+      System.out.println();
+
+      //int[] arr6 = new int[] { 3, 0, 0 };
+      int[] arr6 = new int[] { 8, 11, 0, 0, 12, 0, 44, 0, 0, 1, 5, 6, 6, 0, 2, 45, 0, 0 };
+      System.out.println(Arrays.toString(arr6));
+      moveZerosToTheEnd(arr6);
+      System.out.println(Arrays.toString(arr6));
+      System.out.println();
+
+      int[] arr7 = new int[] {};
+      System.out.println(Arrays.toString(arr7));
+      moveZerosToTheEnd(arr7);
+      System.out.println(Arrays.toString(arr7));
+      System.out.println();
     }
   }
 }
