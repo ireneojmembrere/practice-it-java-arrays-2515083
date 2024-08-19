@@ -56,22 +56,31 @@ public class App {
 
   public static void moveZerosToTheEnd(int[] arr) {
     int i = 0;
-    int zerosCount = 0;
-    while (i < arr.length - zerosCount){
+    int zerosCount = 0; // keep track how many zeros we have
+    while (i < arr.length - zerosCount){ // keep looping until the point we know there are only zeros left
       if (arr[i] == 0){
         for (int j = i; j < arr.length-1; j++){
-          arr[j] = arr[j+1];
+          arr[j] = arr[j+1]; // when we find a zero, shift all elements to the left to preserve order
         }
-        arr[arr.length-1] = 0;
-        zerosCount++;
+        arr[arr.length-1] = 0; // add a zero to the end of the array
+        zerosCount++; // increases the count of zeros
       } else {
-        i++;
+        i++; // move onto the next index
       }
     }
   }
 
+  public static void reverse(int[] arr) {
+    int temp;
+    for (int i = 0; i < arr.length/2; i++){
+      temp = arr[i]; // temporary variable so we don't lose information about array elements
+      arr[i] = arr[arr.length - 1 - i]; // switch elements equidistant from the ends
+      arr[arr.length - 1 - i] = temp;
+    }
+  }
+
   public static void main(String[] args) {
-    int testing = 4;
+    int testing = 5;
 
     if (testing == 1) {// testing findSecondSmallestItem
       Integer[] arr = new Integer[] { 5, 8, 3, 2, 6 };
@@ -123,6 +132,7 @@ public class App {
       System.out.println(Arrays.toString(arr2));
     }
 
+    // testing moveZerosToTheEnd
     if (testing == 4){
       int[] arr = new int[] { 1, 1, 0, 0, 0, 1, 0 };
       System.out.println(Arrays.toString(arr));
@@ -165,6 +175,45 @@ public class App {
       System.out.println(Arrays.toString(arr7));
       moveZerosToTheEnd(arr7);
       System.out.println(Arrays.toString(arr7));
+      System.out.println();
+    }
+
+    // testing reverse
+    if (testing == 5){
+      int[] arr = new int[] {};
+      System.out.println(Arrays.toString(arr));
+      reverse(arr);
+      System.out.println(Arrays.toString(arr));
+      System.out.println();
+
+      int[] arr2 = new int[] { 1 };
+      System.out.println(Arrays.toString(arr2));
+      reverse(arr2);
+      System.out.println(Arrays.toString(arr2));
+      System.out.println();
+
+      int[] arr3 = new int[] { 1, 2, 3 };
+      System.out.println(Arrays.toString(arr3));
+      reverse(arr3);
+      System.out.println(Arrays.toString(arr3));
+      System.out.println();
+
+      int[] arr4 = new int[] { 1, 2, 3, 4, 5 };
+      System.out.println(Arrays.toString(arr4));
+      reverse(arr4);
+      System.out.println(Arrays.toString(arr4));
+      System.out.println();
+
+      int[] arr5 = new int[] { 9, 3, 4, 1 };
+      System.out.println(Arrays.toString(arr5));
+      reverse(arr5);
+      System.out.println(Arrays.toString(arr5));
+      System.out.println();
+
+      int[] arr6 = new int[] { 1, 2, 3, 4, 5, 6, 7 };
+      System.out.println(Arrays.toString(arr6));
+      reverse(arr6);
+      System.out.println(Arrays.toString(arr6));
       System.out.println();
     }
   }
