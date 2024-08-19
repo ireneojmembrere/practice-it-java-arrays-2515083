@@ -6,9 +6,19 @@ public class App {
     
     if (arr.length <= 1){
       return null; // return null if array is empty or has only 1 element
-    }
-    else {
+    } else {
       int smallestInt = arr[0]; // start with first element of array
+      boolean isTheSame = true;
+
+      for (int i=0; i < arr.length; i++){
+        if (smallestInt != arr[i]) {
+          isTheSame = false;
+        }
+      }
+      if (isTheSame){
+        return null; // return null if all elements are the same
+      }
+
       for (int i = 0; i < arr.length; i++){
         if (arr[i] < smallestInt){ // replace variable value if next element in array is smaller
           smallestInt = arr[i];
