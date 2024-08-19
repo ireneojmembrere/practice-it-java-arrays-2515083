@@ -3,6 +3,7 @@ import java.util.Arrays;
 
 public class App {
 
+  // return second smallest integer from an array of integers
   public static Integer findSecondSmallestItem(Integer[] arr) {
 
     if (arr.length <= 1) {
@@ -34,6 +35,7 @@ public class App {
     }
   }
 
+  // print the elements of an array in a triangle
   public static void printTriangle(Object[] arr) {
     int len = arr.length;
 
@@ -45,6 +47,7 @@ public class App {
     }
   }
 
+  // rotate all elements in an array one place to the right
   public static Object[] rotateRight(Object[] arr) {
     Object[] rotatedArr = new Object[arr.length]; // new array to store rotated values
 
@@ -54,6 +57,7 @@ public class App {
     return rotatedArr;
   }
 
+  // move all the zeros of an array to the end without creating an extra array object
   public static void moveZerosToTheEnd(int[] arr) {
     int i = 0;
     int zerosCount = 0; // keep track how many zeros we have
@@ -70,6 +74,7 @@ public class App {
     }
   }
 
+  // reverse the elements of an array in place (without creating an extra array object)
   public static void reverse(int[] arr) {
     int temp;
     for (int i = 0; i < arr.length/2; i++){
@@ -80,7 +85,7 @@ public class App {
   }
 
   public static void main(String[] args) {
-    int testing = 5;
+    int testing = 6;
 
     if (testing == 1) {// testing findSecondSmallestItem
       Integer[] arr = new Integer[] { 5, 8, 3, 2, 6 };
@@ -215,6 +220,45 @@ public class App {
       reverse(arr6);
       System.out.println(Arrays.toString(arr6));
       System.out.println();
+    }
+
+    // testing CustomArrayList class
+    if (testing == 6){
+      CustomArrayList<Integer> customArrayList = new CustomArrayList<>();
+      System.out.println(customArrayList.size());
+
+      customArrayList.add(1);
+      System.out.println(customArrayList.get(0));
+      System.out.println(customArrayList.size());
+
+      customArrayList.add(2);
+      System.out.println(customArrayList.get(1));
+      System.out.println(customArrayList.size());
+
+      customArrayList.add(3);
+      System.out.println(customArrayList.get(2));
+      System.out.println(customArrayList.size());
+
+      System.out.println();
+
+      CustomArrayList<String> customArrayList2 = new CustomArrayList<>();
+      System.out.println(customArrayList2.size());
+
+      customArrayList2.add("Hi");
+      System.out.println(customArrayList2.get(0));
+      System.out.println(customArrayList2.size());
+
+      customArrayList2.add("Hello");
+      System.out.println(customArrayList2.get(1));
+      System.out.println(customArrayList2.size());
+
+      customArrayList2.add("Hey");
+      System.out.println(customArrayList2.get(2));
+      System.out.println(customArrayList2.size());
+
+      customArrayList2.add("Good morning");
+      System.out.println(customArrayList2.get(3));
+      System.out.println(customArrayList2.size());
     }
   }
 }
